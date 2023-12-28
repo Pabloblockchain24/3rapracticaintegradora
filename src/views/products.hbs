@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>PRODUCTOS</h1>
+    <form method="get" action="/api/products">
+        <label for="limit">CANTIDAD PRODUCTOS POR PAGE</label>
+        <input type="number" name="limit">
+        <button type="submit">ENVIAR</button>
+    </form>
+
+    <form method="get" action="/api/products">
+        <label for="page">ELEGIR PAGINA</label>
+        <input type="number" name="page">
+        <button type="submit"> ENVIAR</button>
+    </form>
+
+    <form method="get" action="/api/products">
+        <label for="category">FILTRO CATEGORIA</label>
+        <input type="text" name="category">
+        <button type="submit">ENVIAR</button>
+    </form>
+
+
+    <form method="get" action="/api/products">
+        <button type="submit" name="sortDirection" value="asc"> DE MENOR A MAYOR</button>
+        <button type="submit" name="sortDirection" value="des"> DE MAYOR A MENOR</button>
+    </form>
+
+    {{#each productos}}
+    <div>
+        <p>Id:{{this._id}} </p>
+        <p>Nombre:{{this.nombre}} </p>
+        <p>Descripcion: {{this.descripcion}}</p>
+        <p>category: {{this.category}}</p>
+        <p>Precio: {{this.precio}}</p>
+        <p>Stock: {{this.stock}}</p>
+
+        <form method="POST" action="/api/carts/654aae13eb29ee62a7a0390e/products/{{_id}}">
+            <button type="submit">Agregar al carrito "654aae13eb29ee62a7a0390e"</button>
+        </form>
+        <hr>
+    </div>
+    {{/each}}
+    <h3>CARRITO ESTA HARDCODEADO DADO QUE USUARIO NO ESTA AUTENTICADO EN ESTE PUNTO Y NO TENGO DE DONDE SACAR EL CART</h3>
+</body>
+
+</html>

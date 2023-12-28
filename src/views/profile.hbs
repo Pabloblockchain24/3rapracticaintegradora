@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>PERFIL</h1>
+    <p>NOMBRE: {{first_name}} {{last_name}}</p>
+    <p>EMAIL: {{email}}</p>
+    <p>AGE: {{age}}</p>
+    <p>ROL: {{role}}</p>
+    <form method="POST" action="/api/users/logout">
+        <button type="submit">LOGOUT</button>
+    </form>
+
+    <div>
+        <h1>Pregunta lo que quieras en nuestro chat (Solo para usuarios logueados)</h1>
+        <form method="post" action="/api/message/send" >
+            <input type="text" name="message" placeholder="Escribe tu mensaje">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <h3>CARRITO DE COMPRAS DE {{email}}:</h3>
+    <p> {{msg}}</p>
+    {{#each cart}}
+    <p>Id:{{product._id}} </p>
+    <p>Nombre: {{product.nombre}} </p>
+    <p>Descripcion: {{product.descripcion}}</p>
+    <p>Categoria:{{product.category}}</p>
+    <p>Precio: {{product.precio}}</p>
+    <p>Stock: {{product.stock}}</p>
+    <h5>CANTIDAD A COMPRAR: {{quantity}}</h5>
+    <hr>
+    {{/each}}
+
+</body>
+</html>
