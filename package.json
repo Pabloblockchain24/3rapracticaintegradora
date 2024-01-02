@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-  "engines":{
+  "engines": {
     "node": "18.x"
   },
   "scripts": {
@@ -23,6 +23,7 @@
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.0",
-    "mongoose-paginate-v2": "^1.7.4"
+    "mongoose-paginate-v2": "^1.7.4",
+    "nodemailer": "^6.9.8"
   }
 }

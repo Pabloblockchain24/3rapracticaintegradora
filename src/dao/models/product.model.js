@@ -6,7 +6,15 @@ const productSchema = mongoose.Schema({
     descripcion: String,
     category: String,
     precio: Number,
-    stock: Number
+    stock: Number,
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        default: async () => {
+            const adminUser = await User.findOne({ role: 'admin' });
+            return adminUser ? adminUser._id : null;
+        }
+    },
 })
 
 productSchema.plugin(mongoosePaginate)

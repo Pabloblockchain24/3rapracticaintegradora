@@ -39,8 +39,20 @@ export default class Users {
         return newUser
     }
 
+    updateUser = async(uid, userToReplace) => {
+        let actualizado = await userModel.updateOne({_id: uid}, userToReplace)
+        return actualizado
+    }
 
-
+    getUserByResetToken = async (token) => {
+        try {
+            let user = await userModel.findOne({resetToken: token})
+            return user
+        } catch (error) {
+            console.log(error)
+            return null
+        }
+    }
 
 
 

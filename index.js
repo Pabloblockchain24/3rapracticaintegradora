@@ -13,8 +13,6 @@ import cartRouter from "./src/routes/carts.router.js"
 import userRouter from "./src/routes/users.router.js"
 import sessionRouter from "./src/routes/sessions.router.js"
 import messageRouter from "./src/routes/message.router.js"
-
-
 import config from "./src/config/config.js"
 
 const app = express()

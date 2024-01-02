@@ -40,4 +40,24 @@ export default class UserRepository {
         let result = await this.dao.createUser(newUser)
         return result
     }
+
+    updateUserById = async(uid, userToReplace) =>{
+        try {
+            let result = await this.dao.updateUser(uid,userToReplace)
+            return result
+        }catch (error) {
+            console.log(error)
+            return null
+        }
+    }
+
+    getUserByResetToken = async(token) => {
+        try {
+            let result = await this.dao.getUserByResetToken(token)
+            return result    
+        } catch (error) {
+            console.log(error)
+            return null
+        }
+    }
 }

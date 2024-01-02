@@ -12,18 +12,33 @@ export const updateProductById = async (req, res) => {
 }
 
 export const deleteProduct = async (req, res) => {
-    let { pid } = req.params
-    let result = await productsService.deleteProductById(pid)
-    res.send({ result: "success", payload: result })
+    let pid = req.params.pid
+
+    if (req.user.role === "premium"){
+        let productFound = await productsService.getProductById(pid)
+        if (productFound.owner.equals(req.user._id)){
+            let result = await productsService.deleteProductById(pid)
+            res.send({ result: "success", payload: result })
+        }else{
+            res.status(404).send({ status: "error", message: "Producto no pertenece al usuario premium autenticado" });
+        }
+    }else{
+        await productsService.deleteProductById(pid)
+        res.send({ result: "success", payload: result })
+    } 
+
 }
 
 export const postProduct = async (req, res) => {
     let { nombre, descripcion, category, precio, stock } = req.body
     if (!nombre || !descripcion || !category || !precio || !stock) {
         return res.send({ status: "error", error: "faltan datos" })
+    }else{
+        const newProduct = {nombre, descripcion, category, precio, stock, owner:req.user._id}
+        await productsService.postProduct(newProduct)
+        res.status(400).send({ result: "success", payload: newProduct })
     }
-    let result = await productsService.postProduct({ nombre, descripcion, category, precio, stock })
-    res.send({ result: "success", payload: result })
+
 }
 
 export const getProduct = async (req, res) => {
