@@ -13,6 +13,7 @@ const verifyToken = async (req, res, next) => {
     });
 };
 
+
 export const adminAuth = async(req,res,next) => {
     try {
         await verifyToken(req, res, next);

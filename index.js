@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 import cookieParser from "cookie-parser";
 import {engine} from "express-handlebars"
 
+
 import productRouter from "./src/routes/products.router.js"
 import cartRouter from "./src/routes/carts.router.js"
 import userRouter from "./src/routes/users.router.js"
@@ -20,10 +21,12 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
 
+//configuracion del handlebars
 app.engine("handlebars", engine())
 app.set("view engine", "handlebars")
 app.set("views", path.resolve(__dirname + "/src/views"))
- 
+
+
 
 // en el archivo .env tenemos => PORT = 8080
 app.listen(config.port, () => {
@@ -31,7 +34,7 @@ app.listen(config.port, () => {
 })
 
 // en el archivo .env tenemos => MONGO_URL = mongodb+srv://parcepaivaTest:clusterMongo@clustercoderhouse.unxc6mu.mongodb.net/?retryWrites=true&w=majority
-mongoose.connect(config.MONGO_URL)
+mongoose.connect(config.MONGO_URL)  
     .then(() => {
         console.log("Conectado a la base de datos")
     })

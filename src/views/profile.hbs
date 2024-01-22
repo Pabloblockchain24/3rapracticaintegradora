@@ -12,14 +12,53 @@
     <p>NOMBRE: {{first_name}} {{last_name}}</p>
     <p>EMAIL: {{email}}</p>
     <p>AGE: {{age}}</p>
-    <p>ROL: {{role}}</p>
     <form method="POST" action="/api/users/logout">
         <button type="submit">LOGOUT</button>
     </form>
+    <hr>
+
+    <p>STATUS USUARIO: {{status}}</p>
+
+
+    <h3>Documentos usuario:</h3>
+
+    <form action="/api/users/{{id}}/documents" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="identificacion">Identificación:</label>
+            <input type="file" id="identificacion" name="identificacion" multiple >
+        </div>
+        <div>
+            <label for="comprobante_domicilio">Comprobante domicilio:</label>
+            <input type="file" id="comprobante_domicilio" name="comprobante_domicilio" multiple >
+        </div>
+        <div>
+            <label for="estado_cuenta">Comprobante estado de cuenta:</label>
+            <input type="file" id="estado_cuenta" name="estado_cuenta" multiple >
+        </div>
+        <button type="submit">Subir archivos</button>
+    </form>
+
+    <hr>
+    <h3>FOTO DE PERFIL:</h3>
+        <form action="/api/users/{{id}}/profiles" method="post" enctype="multipart/form-data">
+            <label for="perfil">Foto de perfil:</label>
+            <input type="file" id="perfil" name="perfil" required >
+            <button type="submit">Subir foto perfil</button>
+        </form>
+    <hr>
+
+        <h3>SUBIR PRODUCTO:</h3>
+        <form action="/api/users/{{id}}/products" method="post" enctype="multipart/form-data">
+            <label for="product">Producto:</label>
+            <input type="file" id="product" name="product" required >
+            <button type="submit">Subir producto</button>
+        </form>
+    <hr>
+
 
     <div>
         <h1>Pregunta lo que quieras en nuestro chat (Solo para usuarios logueados)</h1>
-        <form method="post" action="/api/message/send" >
+        <form method="post" action="/api/message/send">
             <input type="text" name="message" placeholder="Escribe tu mensaje">
             <button type="submit">Enviar</button>
         </form>
@@ -39,4 +78,5 @@
     {{/each}}
 
 </body>
+
 </html>

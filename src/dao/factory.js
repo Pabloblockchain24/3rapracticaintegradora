@@ -1,7 +1,6 @@
 import mongoose from "mongoose"
 import config from "../config/config.js"
 
-
 export let Users
 export let Carts
 export let Products

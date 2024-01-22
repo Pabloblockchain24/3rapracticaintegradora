@@ -54,7 +54,5 @@ export default class Users {
         }
     }
 
-
-
 }
 

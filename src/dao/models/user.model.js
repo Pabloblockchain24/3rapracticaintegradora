@@ -13,10 +13,12 @@ const userSchema = new mongoose.Schema({
     }],
     role:{
         type: String,
-        enum: ["user", "admin", "premium"],
+        enum: ["user", "admin"],
         default: "user"
     },
-    resetToken: String
+    fotoPerfil: String,
+    last_connection: Date,
+    documentos: Array,
 })
 
 userSchema.plugin(mongoosePaginate)
